@@ -19,7 +19,7 @@ resource "alicloud_vswitch" "example" {
 
 # InfluxDB must be subscription, influxdb has no pay-as-you-go type.
 resource "alicloud_tsdb_instance" "example" {
-  payment_type     = "PREPAY"
+  payment_type     = "Subscription"
   vswitch_id       = alicloud_vswitch.example.id
   instance_storage = "50"
   instance_class   = "influxdata.n1.mxlarge"
