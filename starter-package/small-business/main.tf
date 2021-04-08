@@ -70,7 +70,7 @@ resource "alicloud_kvstore_instance" "example" {
   vswitch_id        = alicloud_vswitch.vswitch.id
   security_group_id = alicloud_security_group.group.id
   instance_type     = "Redis"
-  engine_version    = "4.0"
+  engine_version    = "5.0"
   config = {
     appendonly             = "yes",
     lazyfree-lazy-eviction = "yes",
