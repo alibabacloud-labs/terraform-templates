@@ -3,5 +3,5 @@ This terraform script will pull up ECS, RDS MySQL and Redis for light applicatio
 
 The cloud resources included:
 - ECS——1C2G 2M, Entry Level (Shared), ecs.t5-lc1m2.small, 20GB cloud disk, CentOS 8.2 x64
-- RDS——1C2G MySQL 8.0, Basic, General-purpose (Entry Level), mysql.n2.small.1, 20GB ESSD
 - Redis——1G, 4.0, Community Edition, Standard, Master-Replica, 1G (master-replica), redis.master.small.default
+- RDS——1C2G MySQL 8.0, Basic, General-purpose (Entry Level), mysql.n2.small.1, 20GB ESSD
