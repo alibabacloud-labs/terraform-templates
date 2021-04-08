@@ -35,10 +35,10 @@ resource "alicloud_instance" "instance" {
   # series III
   instance_type              = "ecs.t5-lc1m1.small"
   system_disk_category       = "cloud_efficiency"
-  system_disk_name           = "test_foo_system_disk_name"
-  system_disk_description    = "test_foo_system_disk_description"
+  system_disk_name           = "testing_system_disk_name"
+  system_disk_description    = "testing_system_disk_description"
   image_id                   = "centos_8_2_x64_20G_alibase_20201120.vhd"
-  instance_name              = "test_foo"
+  instance_name              = "testing"
   instance_charge_type       = "PostPaid"
   vswitch_id                 = alicloud_vswitch.vswitch.id
   internet_max_bandwidth_out = 10

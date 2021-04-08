@@ -10,8 +10,8 @@ variable "name" {
 
 ######## Security group
 resource "alicloud_security_group" "group" {
-  name        = "sg_sp_light_app"
-  description = "Security group for starter package light application scenario"
+  name        = "sg_sp_small_business"
+  description = "Security group for starter package small business scenario"
   vpc_id      = alicloud_vpc.vpc.id
 }
 
@@ -33,19 +33,19 @@ resource "alicloud_instance" "instance" {
   security_groups = alicloud_security_group.group.*.id
 
   # series III
-  instance_type              = "ecs.t5-lc1m2.small"
-  system_disk_category       = "cloud_efficiency"
-  system_disk_name           = "light_app_system_disk_name"
-  system_disk_description    = "light_app_system_disk_description"
+  instance_type              = "ecs.c6e.large"
+  system_disk_category       = "cloud_essd"
+  system_disk_name           = "small_business_system_disk_name"
+  system_disk_description    = "small_business_system_disk_description"
   image_id                   = "centos_8_2_x64_20G_alibase_20201120.vhd"
-  instance_name              = "light_application"
+  instance_name              = "small_business"
   instance_charge_type       = "PostPaid"
   vswitch_id                 = alicloud_vswitch.vswitch.id
   internet_max_bandwidth_out = 10
   data_disks {
     name        = "disk2"
-    size        = 20
-    category    = "cloud_efficiency"
+    size        = 50
+    category    = "cloud_essd"
     description = "disk2"
     # encrypted   = true
     # kms_key_id  = alicloud_kms_key.key.id
@@ -66,7 +66,7 @@ data "alicloud_zones" "default" {
 }
 
 resource "alicloud_kvstore_instance" "example" {
-  db_instance_name  = "tf-light-app"
+  db_instance_name  = "tf-small-business"
   vswitch_id        = alicloud_vswitch.vswitch.id
   security_group_id = alicloud_security_group.group.id
   instance_type     = "Redis"
@@ -81,7 +81,7 @@ resource "alicloud_kvstore_instance" "example" {
   }
   resource_group_id = "rg-123456"
   zone_id           = data.alicloud_zones.default.zones[0].id
-  instance_class    = "redis.master.small.default"
+  instance_class    = "redis.master.mid.default"
 }
 
 resource "alicloud_kvstore_account" "example" {
@@ -98,8 +98,8 @@ variable "rds_mysql_name" {
 resource "alicloud_db_instance" "instance" {
   engine                   = "MySQL"
   engine_version           = "8.0"
-  instance_type            = "mysql.n2.small.1"
-  instance_storage         = "20"
+  instance_type            = "mysql.x2.medium.2c"
+  instance_storage         = "50"
   db_instance_storage_type = "cloud_essd"
   instance_charge_type     = "Postpaid"
   vswitch_id               = alicloud_vswitch.vswitch.id
