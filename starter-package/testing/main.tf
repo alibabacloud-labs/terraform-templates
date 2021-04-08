@@ -39,6 +39,7 @@ resource "alicloud_instance" "instance" {
   system_disk_description    = "test_foo_system_disk_description"
   image_id                   = "centos_8_2_x64_20G_alibase_20201120.vhd"
   instance_name              = "test_foo"
+  instance_charge_type       = "PostPaid"
   vswitch_id                 = alicloud_vswitch.vswitch.id
   internet_max_bandwidth_out = 10
   data_disks {
