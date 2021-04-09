@@ -81,7 +81,7 @@ resource "alicloud_kvstore_instance" "example" {
   }
   resource_group_id = "rg-123456"
   zone_id           = data.alicloud_zones.default.zones[0].id
-  instance_class    = "redis.logic.sharding.4g.2db.0rodb.4proxy.default"
+  instance_class    = "redis.amber.logic.sharding.2g.4db.0rodb.12proxy.multithread"
 }
 
 resource "alicloud_kvstore_account" "example" {
