@@ -1,4 +1,6 @@
-# Using the terraform scripts under this folder can get the list of available zones for Alibaba Cloud Database products on regions globally
+# Using Terraform to obtain available zones for Alibaba Cloud Database products on global regions
+
+Using the terraform scripts under this folder can get the list of available zones for Alibaba Cloud Database products on regions globally.
 
 ## Basic steps
 
