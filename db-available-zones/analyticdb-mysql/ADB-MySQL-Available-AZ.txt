@@ -1,0 +1,5 @@
+[
+	{
+		"id": "ap-southeast-1b"
+	}
+]

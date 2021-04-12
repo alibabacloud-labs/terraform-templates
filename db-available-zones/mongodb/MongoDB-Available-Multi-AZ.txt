@@ -1,0 +1,10 @@
+[
+	{
+		"id": "ap-southeast-1MAZ3(a,b,c)",
+		"multi_zone_ids": [
+			"ap-southeast-1a",
+			"ap-southeast-1b",
+			"ap-southeast-1c"
+		]
+	}
+]

@@ -1,0 +1,8 @@
+[
+	{
+		"id": "ap-southeast-1a"
+	},
+	{
+		"id": "ap-southeast-1c"
+	}
+]
