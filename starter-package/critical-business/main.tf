@@ -90,4 +90,33 @@ resource "alicloud_kvstore_account" "example" {
   instance_id      = alicloud_kvstore_instance.example.id
 }
 
+######## PolarDB
+resource "alicloud_polardb_cluster" "cluster" {
+  db_type       = "MySQL"
+  db_version    = "8.0"
+  db_node_class = "polar.mysql.x4.large"
+  pay_type      = "PostPaid"
+  vswitch_id    = alicloud_vswitch.vswitch.id
+  description   = "PolarDB MySQL for critical business"
+}
 
+resource "alicloud_polardb_account" "account" {
+  db_cluster_id       = alicloud_polardb_cluster.cluster.id
+  account_name        = "test_polardb"
+  account_password    = "N1cetest"
+  account_description = "Critical business"
+}
+
+resource "alicloud_polardb_database" "default" {
+  db_cluster_id = alicloud_polardb_cluster.cluster.id
+  db_name       = "test_database"
+}
+
+resource "alicloud_polardb_account_privilege" "privilege" {
+  db_cluster_id     = alicloud_polardb_cluster.cluster.id
+  account_name      = alicloud_polardb_account.account.account_name
+  account_privilege = "ReadWrite"
+  db_names          = [alicloud_polardb_database.default.db_name]
+}
+
+######## MongoDB
