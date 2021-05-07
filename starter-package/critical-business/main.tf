@@ -120,3 +120,48 @@ resource "alicloud_polardb_account_privilege" "privilege" {
 }
 
 ######## MongoDB
+variable "shard" {
+  default = {
+    node_class   = "dds.shard.mid"
+    node_storage = 10
+  }
+}
+
+variable "mongo" {
+  default = {
+    node_class = "dds.mongos.large"
+  }
+}
+
+resource "alicloud_mongodb_sharding_instance" "foo" {
+  zone_id        = data.alicloud_zones.default.zones[0].id
+  vswitch_id     = alicloud_vswitch.vswitch.id
+  engine_version = "4.2"
+  name           = "MongoDB for critical business"
+  dynamic "shard_list" {
+    for_each = [var.shard]
+    content {
+      node_class   = shard_list.value.node_class
+      node_storage = shard_list.value.node_storage
+    }
+  }
+  dynamic "shard_list" {
+    for_each = [var.shard]
+    content {
+      node_class   = shard_list.value.node_class
+      node_storage = shard_list.value.node_storage
+    }
+  }
+  dynamic "mongo_list" {
+    for_each = [var.mongo]
+    content {
+      node_class = mongo_list.value.node_class
+    }
+  }
+  dynamic "mongo_list" {
+    for_each = [var.mongo]
+    content {
+      node_class = mongo_list.value.node_class
+    }
+  }
+}
